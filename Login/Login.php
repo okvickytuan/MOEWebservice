@@ -21,8 +21,23 @@ $Password = $_POST['Password'];
 		} else {
 			if ($user['loginTime'] == 0 || time() - $user['loginTime'] > 11) {
 				$user['loginTime'] = time();
-				$data = ['api' => 1, 'id' => (string)$user['_id']];
-				echo json_encode( $data );	//Login Success
+				
+				if (count($user['Closest']) == 0) {
+					$data = array(
+						'api' => 1,
+						'id' => (string)$user['_id']
+					);
+					echo json_encode( $data );	//Login Success
+				} else {
+					$data = array(
+						'api' => 1,
+						'id' => (string)$user['_id'],
+						'closest' => $user['Closest']
+					);
+					echo json_encode( $data );	//Login Success
+				}
+				
+				
 			} else {
 				$data = ['api' => 0];
 				echo json_encode( $data );	//Login Failed

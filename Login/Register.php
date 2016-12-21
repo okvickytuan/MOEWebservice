@@ -16,10 +16,15 @@ $Password = $_POST['Password'];
 		$document = array(
 			'username' => $Username,
 			'password' => $Password,
-			'loginTime' => 0
+			'loginTime' => 0,
+			'Closest' => (object)array()
 		);
 		
-		if(!count($count)) {
+		
+		if(trim($Username) == "" || trim($Password) == "" || 
+			strlen(trim($Username)) < 6 || strlen(trim($Password)) < 6) {
+			echo 2;
+		} else if(!count($count)) {
 			$collection->insert($document);
 			echo 4;	//Success
 		} else {
