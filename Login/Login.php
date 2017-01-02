@@ -25,12 +25,14 @@ $Password = $_POST['Password'];
 				if (count($user['Closest']) == 0) {
 					$data = array(
 						'api' => 1,
+						'username' => $user['username'],
 						'id' => (string)$user['_id']
 					);
 					echo json_encode( $data );	//Login Success
 				} else {
 					$data = array(
 						'api' => 1,
+						'username' => $user['username'],
 						'id' => (string)$user['_id'],
 						'closest' => $user['Closest']
 					);
