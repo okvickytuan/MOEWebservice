@@ -7,7 +7,7 @@ $dbName = 'QuestionDB';
 	$collection = $db->Question;
 	
 	$query = array(
-		'qid' => rand(1, 3)
+		'qid' => rand(1, 105)
 	);
 	$ques = $collection->findOne($query);
 	if ($db) {
